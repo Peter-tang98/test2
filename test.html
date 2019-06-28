@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script type="text/javascript" src="./jquery"></script>
+  <script src="./a"></script>
+  <style>
+   div{height:30px;width:30px;display:inline-block;}
+   #red{background:red;}
+   #black{background:black;}
+   #white{background:white;}
+  </style>
+ </head>
+ <body>
+  <div id="black"></div>
+  <div id="white"></div>
+  <div id="red"></div>
+ </body>
+ <script type="text/javascript">
+  $(document).ready(function(){
+   $.get('http://localhost:10888/erase', {}, function(res){});
+   $('#red').click(function(){
+    $.get('http://localhost:10888/red', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+   });
+   $('#black').click(function(){
+    $.get('http://localhost:3000/black', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+   });
+   $('#white').click(function(){
+    $.get('http://localhost:3000/white', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+   });
+  });
+  function refresh(){
+   $('#white').before($('#red'));
+   $('#black').before($('#white'));
+  }
+ </script>
+    <div id="container">
+        <br />
+        <div id="output"> 
+            result
+        </div>
+        <script src="/a"></script>
+    </div>
+</html> 
