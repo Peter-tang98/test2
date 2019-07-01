@@ -48,7 +48,7 @@ app.get('/erase', function(req, res){
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/test.html');
 })
-
+/*
 app.get('/a', function(req, res){
   res.sendFile(__dirname + '/a.js');
 })
@@ -60,6 +60,8 @@ app.get('/result', function(req, res){
 app.get('/jquery', function(req, res){  
   res.sendFile(__dirname + '/jquery-3.4.1.min.js');
 })
+*/
+app.use(express.static('public'));
 
 var server = app.listen(port, function(){
  console.log(`The server is started. (listening on port ${port})`);

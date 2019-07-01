@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <script type="text/javascript" src="./jquery"></script>
-  <script src="./a"></script>
+  <script type="text/javascript" src="/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/jquery.cookie.js"></script>
   <style>
    div{height:30px;width:30px;display:inline-block;}
    #red{background:red;}
@@ -17,27 +17,35 @@
  </body>
  <script type="text/javascript">
   $(document).ready(function(){
-   $.get('http://localhost:10888/erase', {}, function(res){});
+   $.get('/erase', {}, function(res){});
    $('#red').click(function(){
-    $.get('http://localhost:10888/red', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+    $.get('/red', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
    });
    $('#black').click(function(){
-    $.get('http://localhost:3000/black', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+    $.get('/black', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
    });
    $('#white').click(function(){
-    $.get('http://localhost:3000/white', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
+    $.get('/white', {}, function(res){ if(parseInt(res) >=  3){ refresh();}});
    });
   });
   function refresh(){
    $('#white').before($('#red'));
    $('#black').before($('#white'));
   }
+/*
+  $('div').sort(function (a, b, c) {
+    var contentA =parseInt( $(a).attr('black'));
+    var contentB =parseInt( $(b).attr('red'));
+    var contentC =parseInt( $(c).attr('red'));
+    return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+    });
+    */
  </script>
     <div id="container">
         <br />
         <div id="output"> 
             result
         </div>
-        <script src="/a"></script>
+        <script src="/a.js"></script>
     </div>
 </html> 
